@@ -1,10 +1,10 @@
 //import logo from './logo.svg';
 import './App.css';
-import LearningComponent from './components/learning-examples/LearningComponent';
+import Counter from './components/counter/Counter';
 
 function App() {
   return (
-    <LearningComponent />
+    <Counter />
   );
 }
 
