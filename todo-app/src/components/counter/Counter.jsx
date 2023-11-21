@@ -1,17 +1,19 @@
 import { useState } from 'react'
 import './Counter.css'
 
-export default function Counter() {
+export default function Counter({by}) {
 
     // [0,f]
     const [count, setCount] = useState(0);
 
+    console.log(by);
+
     function incrementCounterFunction() {
-        setCount(count + 1)
+        setCount(count + by)
     }
 
     function decrementCounterFunction() {
-        setCount(count - 1)
+        setCount(count - by)
     }
 
     return (
@@ -20,9 +22,9 @@ export default function Counter() {
             <div>
                 <button className="counterButton" 
                     onClick={incrementCounterFunction}
-                >+1</button>
+                >+{by}</button>
                 <button className="counterButton"
-                    onClick={decrementCounterFunction}>-1</button>
+                    onClick={decrementCounterFunction}>-{by}</button>
             </div>
         </div>
     )
@@ -32,5 +34,7 @@ export default function Counter() {
     // Each element in a HTML page is a node in the DOM
     // You need tp update the DOM to update the element
     // However, writing code to update the DOM can be complex and slow
-    
+
+    // => React takes different approach:
+    /// Virtual DOM
 }
