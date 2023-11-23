@@ -6,9 +6,9 @@ function App() {
   return (
     <div className="App">
     {/* <PlayingWithProps property1="value1" property2="value2" /> */}
-    <Counter by="1"/>
-    <Counter by="2"/>
-    <Counter by="3"/>
+    <Counter by={1}/>
+    <Counter by={2}/>
+    <Counter/>
     </div>
   );
 }
