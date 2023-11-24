@@ -17,14 +17,14 @@ export default function Counter() {
     return (
         <>
         <span className="totalCount">{count}</span>
-        <CounterButton by={1}/>
-        <CounterButton by={2}/>
-        <CounterButton/>
+        <CounterButton by={1} incrementMethod={incrementParentFunction} decrementMethod={decrementParentFunction}/>
+        <CounterButton by={2} incrementMethod={incrementParentFunction} decrementMethod={decrementParentFunction}/>
+        <CounterButton incrementMethod={incrementParentFunction} decrementMethod={decrementParentFunction}/>
         </>
     )
 }
 
- function CounterButton({by}) {
+ function CounterButton({by, incrementMethod, decrementMethod}) {
 
     // [0,f]
     const [count, setCount] = useState(0);
@@ -33,15 +33,17 @@ export default function Counter() {
 
     function incrementCounterFunction() {
         setCount(count + by)
+        incrementMethod(by)
     }
 
     function decrementCounterFunction() {
         setCount(count - by)
+        decrementMethod(by)
     }
 
     return (
         <div className="Counter">
-            <span className="count">{count}</span>
+            {/* <span className="count">{count}</span> */}
             <div>
                 <button className="counterButton" 
                     onClick={incrementCounterFunction}
