@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import {BrowserRouter, Routes, Route, useNavigate, useParams, Link} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom'
+import LogoutComponent from './LogoutComponent'
+import FooterComponent from './FooterComponent'
+import HeaderComponent from './HeaderComponent';
+import ListTodosComponent from './ListTodosComponent';
+import ErrorComponent from './ErrorComponent';
+import WelcomeComponent from './WelcomeComponent';
 import './TodoApp.css';
 
 export default function TodoApp()
@@ -18,7 +24,7 @@ export default function TodoApp()
                 
                     <Route path='*' element={<ErrorComponent/>} />
                 </Routes>
-                <FooterComponent />
+                
             </BrowserRouter>
         </div>
     )
@@ -99,123 +105,6 @@ function LoginComponent() {
                 <div>
                     <button type="button" name="Login" onClick={hanldeSubmit}>Login</button>
                 </div>
-            </div>
-        </div>
-    )
-}
-
-function WelcomeComponent() {
-    const {username} = useParams()
-
-    console.log(username);
-
-    return (
-        <div className="WelcomeComponent">
-        <h1>Welcome {username}!</h1>
-        <div>
-            Your todos. <Link to="/todos">Go here</Link>
-        </div>
-        </div>
-    )
-}
-
-function ErrorComponent() {
-    return (
-        <div className="ErrorComponent">
-            <h1>We are working really hard!</h1>
-            <div>
-                Apologies for the 404. Reach out to our team at ABC-DEF-GHIJ.
-            </div>
-        </div>
-    )
-}
-
-function HeaderComponent() {
-    return (
-        <header className="border-bottom border-light border-5 mb-5 p-2">
-            <div className="container">
-                <div className="row">
-                    <nav className="navbar navbar-expand-lg">
-                        <a className="navbar-brand ms-2 fs-2 fw-bold text-black" href="/">Sammy</a>
-                        <div className="collapse navbar-collapse">
-                            <ul className="navbar-nav">
-                                <li className="nav-item fs-5"><Link className="nav-link" to="/welcome/sammy">Home</Link></li>
-                                <li className="nav-item fs-5"><Link className="nav-link" to="/todos">Todos</Link></li>
-                            </ul>
-                        </div>
-                        <ul className="navbar-nav">
-                            <li className="nav-item fs-5"><Link className="nav-link" to="/login">Login</Link></li>
-                            <li className="nav-item fs-5"><Link className="nav-link" to="/logout">Logout</Link></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-    )
-}
-
-function FooterComponent() {
-    return (
-        <footer className="footer">
-            <div className="container">
-                Your Footer
-            </div>
-        </footer>
-    )
-}
-
-function LogoutComponent() {
-    return (
-        <div className="LogoutComponent">
-            <h1>You are logged out!</h1>
-            <div>
-                Thank you for using our App. Come back soon!
-            </div>
-        </div>
-    )
-}
-
-function ListTodosComponent() {
-
-    const today = new Date();
-    const targetDate = new Date(today.getFullYear()+12, today.getMonth(), today.getDay());
-
-    const todos = [
-        {id: 1, description: 'learn Spring', done: false, targetDate:targetDate},
-        {id: 2, description: 'learn Full Stack Dev', done:false, targetDate:targetDate},
-        {id: 3, description: 'learn AWS', done: false, targetDate:targetDate},
-    ]
-
-
-    return (
-        <div className="container">
-            <h1>Things you want to do!</h1>
-            <div>
-               <table className="table">
-                   <thead>
-                        <tr>
-                            <td>id</td>
-                            <td>description</td>
-                            <td>is Done?</td>
-                            <td>Target Date</td>
-                        </tr>
-                   </thead>
-                   <tbody>
-                       {
-                           todos.map(
-                               todo => (
-                                <tr>
-                                <td>{todo.id}</td>
-                                <td>{todo.description}</td>
-                                <td>{todo.done}</td>
-                                <td>{todo.targetDate.toDateString()}</td>
-                            </tr>
-                               )
-                           )
-                       }
-                
-                   </tbody>
-               </table>
             </div>
         </div>
     )
