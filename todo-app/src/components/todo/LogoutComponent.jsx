@@ -1,4 +1,4 @@
-export default function LogoutComponent() {
+function LogoutComponent() {
     return (
         <div className="LogoutComponent">
             <h1>You are logged out!</h1>
@@ -8,3 +8,5 @@ export default function LogoutComponent() {
         </div>
     )
 }
+
+export default LogoutComponent
