@@ -9,8 +9,6 @@ function LoginComponent() {
 
     const [password, setPassword] = useState('')
 
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false)
-
     const [showErrorMessage, setShowErrorMessage] = useState(false)
 
     const navigate = useNavigate()
@@ -19,8 +17,6 @@ function LoginComponent() {
 
 
     function handleUsernameChange(event) {
-        // console.log(event);
-        // console.log(event.target.value);
         setUsername(event.target.value)
     }
 
@@ -30,18 +26,12 @@ function LoginComponent() {
 
     function hanldeSubmit()
     {
-        if(username==='sammy' && password==='dummy')
+        if(authContext.login(username, password))
         {
-            authContext.setAuthenticated(true)
-            setShowSuccessMessage(true)
-            setShowErrorMessage(false)
             navigate(`/welcome/${username}`)
         } else {
-            setShowSuccessMessage(false)
             setShowErrorMessage(true)
         }
-        console.log(username);
-        console.log(password);
     }
 
     // function SuccessMessageComponent() {
@@ -65,7 +55,6 @@ function LoginComponent() {
     return (
         <div className="Login">
             <h1>Time to Login</h1>
-            {showSuccessMessage && <div className="successMessage">Authenticated SUcceddfully</div>}
             {showErrorMessage && <div className="errorMessage">Authentication Failed. Please check your credentials.</div>}
             {/* <SuccessMessageComponent />
             <ErrorMessageComponent /> */}
