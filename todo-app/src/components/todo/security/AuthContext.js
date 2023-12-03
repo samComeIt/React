@@ -17,6 +17,7 @@ export default function AuthProvider({children}) {
         if(username==='sammy' && password==='dummy')
         {
             setAuthenticated(true)
+            return true
         } else {
             setAuthenticated(false)
             return false
