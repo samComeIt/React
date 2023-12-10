@@ -18,7 +18,7 @@ function WelcomeComponent() {
         // .catch((error) => errorResponse(error))
         // .finally(() => console.log('cleanup'))
 
-        retrieveHelloWorldPathVariable('Sammy')
+        retrieveHelloWorldPathVariable(username)
         .then((response) => successfulResponse(response))
         .catch((error) => errorResponse(error))
         .finally(() => console.log('cleanup'))
