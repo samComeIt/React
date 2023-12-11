@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { deleteTodoApi, retrieveTodosForUsernameApi } from "./api/TodoApiService";
 import { useAuth } from "./security/AuthContext";
 
@@ -10,6 +11,8 @@ function ListTodosComponent() {
     const authContext = useAuth(); 
 
     const username = authContext.username
+
+    const navigate = useNavigate()
 
     const [todos, setTodos] = useState([])
 
@@ -44,6 +47,10 @@ function ListTodosComponent() {
         .catch(error => console.log(error))
     }
 
+    function updateTodo(id) {
+        navigate(`/todo/${id}`)
+    }
+
     return (
         <div className="container">
             <h1>Things you want to do!</h1>
@@ -57,6 +64,7 @@ function ListTodosComponent() {
                             <th>is Done?</th>
                             <th>Target Date</th>
                             <th>Delete</th>
+                            <th>Update</th>
                         </tr>
                    </thead>
                    <tbody>
@@ -69,6 +77,8 @@ function ListTodosComponent() {
                                 <td>{todo.targetDate.toString()}</td>
                                 <td><button className="btn btn-warning" 
                                     onClick={() => deleteTodo(todo.id)}>Delete</button></td>
+                                <td><button className="btn btn-success" 
+                                    onClick={() => updateTodo(todo.id)}>Update</button></td>
                             </tr>
                                )
                            )
