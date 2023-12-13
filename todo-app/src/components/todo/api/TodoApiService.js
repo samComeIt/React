@@ -17,3 +17,6 @@ export const retrieveTodoApi
 
 export const updateTodoApi
     = (username, id, todo) => apiClient.put(`/users/${username}/todo/${id}`, todo)  
+
+export const createTodoApi
+    = (username, todo) => apiClient.post(`/users/${username}/todo`, todo)      
