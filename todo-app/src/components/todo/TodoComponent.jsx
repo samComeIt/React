@@ -75,7 +75,7 @@ export default function TodoComponent() {
             errors.description = 'Enter a valid decriotion'
         }
 
-        if (values.targetDate === null || values.targetDate === '' || moment(values.targetDate).isValid())
+        if (values.targetDate === null || values.targetDate === '' || !moment(values.targetDate).isValid())
         {
             errors.targetDate = 'Enter a valid target date'
         }
